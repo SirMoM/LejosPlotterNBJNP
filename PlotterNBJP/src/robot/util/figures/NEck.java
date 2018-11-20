@@ -23,12 +23,20 @@ public class NEck extends GeoFig {
 	public List<Instruction> getInstructionSet() {
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 		int nDegree = 360 / ecke;
-		for (int i = 0; i < ecke; i++) {
-			Coordinate temp = EinheitsKreis.berechnePositionAufKreis(nDegree * i, this.getRadius());
-			instructions.add(new Instruction(true, temp.getxCoord(), temp.getyCoord()));
+		Coordinate curCoor = new Coordinate(0, 0);
+		Coordinate nextCoor = new Coordinate(getRadius(), 0);
+		instructions.add(new Instruction(false, nextCoor.getxCoord(),nextCoor.getyCoord()));
+		for (int i = 1; i <= ecke; i++) {
+			curCoor = nextCoor;
+			nextCoor = EinheitsKreis.berechnePositionAufKreis(curCoor, nDegree);
+			Coordinate deltaCoor = new Coordinate(curCoor.getxCoord() - nextCoor.getxCoord(), curCoor.getyCoord() - nextCoor.getyCoord());
+			
+			instructions.add(new Instruction(true, deltaCoor.getxCoord(),deltaCoor.getyCoord()));
+			
+//			instructions.add(new Instruction(true, this.getRadius(),0));
+//			Coordinate temp = EinheitsKreis.berechnePositionAufKreis(nDegree * i, this.getRadius());
+//			instructions.add(new Instruction(true, temp.getxCoord(), temp.getyCoord()));
 		}
-		Coordinate lastCor = EinheitsKreis.berechnePositionAufKreis(0, this.getRadius());
-		instructions.add(new Instruction(true, lastCor.getxCoord(), lastCor.getyCoord()));
 		return instructions;
 	}
 
