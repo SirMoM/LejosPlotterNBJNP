@@ -49,7 +49,7 @@ public class Line extends GeoFig{
 			double moveToEndXCoord = this.getRoboter().getCurrentCoordinate().getxCoord() - (this.getMittelpunkt().getxCoord() - ankathete);
 			double moveToEndYCoord = this.getRoboter().getCurrentCoordinate().getyCoord() - (this.getMittelpunkt().getyCoord() - hypotenuse);
 
-			instructions.add(new Instruction(false, moveToEndXCoord, moveToEndYCoord));
+			instructions.add(new Instruction(true, moveToEndXCoord, moveToEndYCoord));
 		} else{
 			instructions.add(new Instruction(true, this.endPoint.getxCoord(), this.endPoint.getyCoord()));
 		}

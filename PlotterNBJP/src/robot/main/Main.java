@@ -4,7 +4,7 @@ import lejos.hardware.Sound;
 import robot.components.Roboter;
 import robot.util.Coordinate;
 import robot.util.DisplayHandler;
-import robot.util.figures.Line;
+import robot.util.figures.Quadrat;
 
 /**
  * @author Noah Ruben, Benjamin Wiemann, J-P Edoh
@@ -18,8 +18,8 @@ public class Main{
 		roboter.goToStartPos();
 		Sound.beepSequence();
 		DisplayHandler.writeCurrentCoordinate(roboter.getCurrentCoordinate());
-		Line line = new Line(new Coordinate(10, 10));
-		roboter.addToQ(line.getInstructionSet());
+		Quadrat quadrat = new Quadrat(20, 0, new Coordinate(50, 50), roboter);
+		roboter.addToQ(quadrat.getInstructionSet());
 		roboter.processInstructions();
 
 	}

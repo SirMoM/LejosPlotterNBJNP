@@ -40,7 +40,7 @@ public class Quadrat extends GeoFig{
 		instructions.addAll(new Line(new Coordinate(-turnCur.getxCoord(), -this.sideLength - turnCur.getyCoord())).getInstructionSet());
 		instructions.addAll(new Line(new Coordinate(-this.sideLength - turnCur.getxCoord(), -turnCur.getyCoord())).getInstructionSet());
 		instructions.add(new Instruction(false, 0, 0));
-		return null;
+		return instructions;
 	}
 
 }
