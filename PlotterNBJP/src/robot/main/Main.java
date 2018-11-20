@@ -19,8 +19,8 @@ public class Main{
 //		roboter.goToStartPos();
 		Sound.beepSequence();
 		DisplayHandler.writeCurrentCoordinate(roboter.getCurrentCoordinate());
-//		roboter.goToYNull();
-		GeoFig nEck = new NEck(0, new Coordinate(100, 100), roboter, 10, 4);
+		roboter.goToYNull();
+		GeoFig nEck = new NEck(0, new Coordinate(100, 100), roboter, 50, 3);
 		roboter.addToQ(nEck.getInstructionSet());
 		roboter.processInstructions();
 

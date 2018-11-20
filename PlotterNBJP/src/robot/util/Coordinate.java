@@ -73,11 +73,10 @@ public class Coordinate{
 	@Override
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
-		builder.append("Coordinate [xCoord=");
+		builder.append("Coordinate: ");
 		builder.append(this.xCoord);
-		builder.append(", yCoord=");
+		builder.append(", ");
 		builder.append(this.yCoord);
-		builder.append("]");
 		return builder.toString();
 	}
 

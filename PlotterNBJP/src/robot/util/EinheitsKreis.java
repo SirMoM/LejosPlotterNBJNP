@@ -23,8 +23,14 @@ public class EinheitsKreis{
 	 */
 	public static Coordinate berechnePositionAufKreis(Coordinate positionImEinheitskreis, double drehungInGradImGegenuhrzeigersinn){
 		final double radius = MathHelper.getHypothenuse(new Coordinate(0, 0), positionImEinheitskreis);
-		final double gradDerPositionImEinheitskreis = Math.toDegrees(Math.acos(positionImEinheitskreis.getxCoord() / radius));
+		double gradDerPositionImEinheitskreis = Math.toDegrees(Math.acos(positionImEinheitskreis.getxCoord() / radius));
+		if(positionImEinheitskreis.getyCoord() < 0){
+			gradDerPositionImEinheitskreis = 360 - gradDerPositionImEinheitskreis;
+		}
 		final double gradAbsolut = gradDerPositionImEinheitskreis + drehungInGradImGegenuhrzeigersinn;
+		// final double gradAbsolut = (gradDerPositionImEinheitskreis +
+		// drehungInGradImGegenuhrzeigersinn) % 360;
+
 		double xBerechnet = Math.cos(Math.toRadians(gradAbsolut)) * radius;
 		double yBerechnet = Math.sin(Math.toRadians(gradAbsolut)) * radius;
 		return new Coordinate(xBerechnet, yBerechnet);

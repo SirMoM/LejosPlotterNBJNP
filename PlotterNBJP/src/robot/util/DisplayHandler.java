@@ -18,14 +18,19 @@ public class DisplayHandler{
 
 	public static void drawProgressbar(int countOfInstructionsToProzess){
 		LCD.clear();
-		for(int i = 5; i < countOfInstructionsToProzess * 6; i += 6){
+		for(int i = 5; i < countOfInstructionsToProzess * 11; i += 11){
 			drawBlock(i, 50);
 		}
+
+		for(int j = 0; j < countOfInstructionsToProzess; j++){
+
+		}
+
 	}
 
 	public static int writeCurrentCoordinate(Coordinate coordinate){
 		String drawCurrentCoordinateString = String.format("Pos: (%.2f, %.2f)", coordinate.getxCoord(), coordinate.getxCoord());
-		LCD.drawString(drawCurrentCoordinateString, 2, 100);
+		LCD.drawString(drawCurrentCoordinateString, 0, LCD.CELL_WIDTH * 5);
 		DisplayHandler.writeFirstLine(drawCurrentCoordinateString);
 		return drawCurrentCoordinateString.length();
 	}
@@ -37,7 +42,7 @@ public class DisplayHandler{
 	 */
 	public static int writeCurrentCoordinate(int xPos, int yPos){
 		String drawCurrentCoordinateString = String.format("Pos: (%d, %d)", xPos, yPos);
-		LCD.drawString(drawCurrentCoordinateString, 0, 10);
+		LCD.drawString(drawCurrentCoordinateString, 0, LCD.CELL_WIDTH * 5);
 //		DisplayHandler.writeFirstLine(drawCurrentCoordinateString);
 		return drawCurrentCoordinateString.length();
 	}
@@ -57,8 +62,8 @@ public class DisplayHandler{
 	}
 
 	private static void drawBlock(int xPosDisplay, int yPosDisplay){
-		for(int x = xPosDisplay; x < xPosDisplay + 5; x++){
-			for(int y = yPosDisplay; y < yPosDisplay + 5; y++){
+		for(int x = xPosDisplay; x < xPosDisplay + 10; x++){
+			for(int y = yPosDisplay; y < yPosDisplay + 10; y++){
 				LCD.setPixel(x, y, 1);
 			}
 		}

@@ -10,6 +10,7 @@ package robot.util;
 public class Instruction{
 
 	private boolean isPenDown;
+
 	private double xVectorLen;
 	private double yVectorLen;
 	private double time;
@@ -79,6 +80,18 @@ public class Instruction{
 	 */
 	public void setyVectorLen(double yVectorLen){
 		this.yVectorLen = yVectorLen;
+	}
+
+	@Override
+	public String toString(){
+		StringBuilder builder = new StringBuilder();
+		builder.append("Instruction: isPenDown=");
+		builder.append(this.isPenDown);
+		builder.append(", xVectorLen=");
+		builder.append(this.xVectorLen);
+		builder.append(", yVectorLen=");
+		builder.append(this.yVectorLen);
+		return builder.toString();
 	}
 
 }
