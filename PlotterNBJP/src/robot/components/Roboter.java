@@ -155,6 +155,8 @@ public class Roboter{
 	 * @param instruction the Instruction to process.
 	 */
 	private void processInstruction(Instruction instruction){
+		this.getXAchse().getMotor().setAcceleration(Integer.MAX_VALUE);
+		this.getYAchse().getMotor().setAcceleration(Integer.MAX_VALUE);
 
 		// TODO the sync should be possible in the MultipositionsAchse
 		this.xAchse.getMotor().synchronizeMotor(this.getYAchse().getMotor());
@@ -166,7 +168,7 @@ public class Roboter{
 			this.getZAchse().deaktiviere();
 		}
 
-		final int gradToTurnIntX = this.getXAchse().gradToTurnInt(instruction.getxVectorLen());
+		final int gradToTurnIntX = this.getXAchse().gradToTurnInt(instruction.getxVectorLen() * -1);
 		final int gradToTurnIntY = this.getYAchse().gradToTurnInt(instruction.getyVectorLen());
 
 		this.getXAchse().setSpeed((int) (gradToTurnIntX / instruction.getTime()));

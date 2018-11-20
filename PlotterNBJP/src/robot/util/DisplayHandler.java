@@ -17,15 +17,16 @@ public class DisplayHandler{
 	}
 
 	public static void drawProgressbar(int countOfInstructionsToProzess){
+		LCD.clear();
 		for(int i = 5; i < countOfInstructionsToProzess * 6; i += 6){
 			drawBlock(i, 50);
 		}
 	}
 
 	public static int writeCurrentCoordinate(Coordinate coordinate){
-		LCD.clear(2);
-		String drawCurrentCoordinateString = String.format("Pos: (%f, %f)", coordinate.getxCoord(), coordinate.getxCoord());
-		LCD.drawString(drawCurrentCoordinateString, 0, 20);
+		String drawCurrentCoordinateString = String.format("Pos: (%.2f, %.2f)", coordinate.getxCoord(), coordinate.getxCoord());
+		LCD.drawString(drawCurrentCoordinateString, 2, 100);
+		DisplayHandler.writeFirstLine(drawCurrentCoordinateString);
 		return drawCurrentCoordinateString.length();
 	}
 
@@ -35,9 +36,9 @@ public class DisplayHandler{
 	 * @return the length of the string to display.
 	 */
 	public static int writeCurrentCoordinate(int xPos, int yPos){
-		LCD.clear(2);
 		String drawCurrentCoordinateString = String.format("Pos: (%d, %d)", xPos, yPos);
-		LCD.drawString(drawCurrentCoordinateString, 0, 20);
+		LCD.drawString(drawCurrentCoordinateString, 0, 10);
+//		DisplayHandler.writeFirstLine(drawCurrentCoordinateString);
 		return drawCurrentCoordinateString.length();
 	}
 
@@ -48,9 +49,8 @@ public class DisplayHandler{
 	 *                    17 will be cut off
 	 */
 	public static void writeFirstLine(String whatToWrite){
-		LCD.clear(0);
 		if(whatToWrite.length() <= LCD.DISPLAY_CHAR_WIDTH){
-			LCD.drawString(whatToWrite, 0, 0);
+			LCD.drawString(whatToWrite, 0, 1);
 		} else{
 			LCD.drawString(whatToWrite.substring(0, 16), 0, 0);
 		}
