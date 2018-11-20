@@ -11,22 +11,22 @@ import robot.util.Instruction;
 public class NEck extends GeoFig {
 
 	private double degree;
-	private int ecke;
+	private int anzahlEcken;
 
-	public NEck(double degree, Coordinate mittelpunkt, Roboter roboter, double radius, int ecke) {
+	public NEck(double degree, Coordinate mittelpunkt, Roboter roboter, double radius, int anzahlEcken) {
 		super(mittelpunkt, roboter, radius);
 		this.degree = degree;
-		this.ecke = ecke;
+		this.anzahlEcken = anzahlEcken;
 	}
 
 	@Override
 	public List<Instruction> getInstructionSet() {
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
-		int nDegree = 360 / ecke;
+		int nDegree = 360 / anzahlEcken;
 		Coordinate curCoor = new Coordinate(0, 0);
 		Coordinate nextCoor = new Coordinate(getRadius(), 0);
 		instructions.add(new Instruction(false, nextCoor.getxCoord(),nextCoor.getyCoord()));
-		for (int i = 1; i <= ecke; i++) {
+		for (int i = 1; i <= anzahlEcken; i++) {
 			curCoor = nextCoor;
 			nextCoor = EinheitsKreis.berechnePositionAufKreis(curCoor, nDegree);
 			Coordinate deltaCoor = new Coordinate(curCoor.getxCoord() - nextCoor.getxCoord(), curCoor.getyCoord() - nextCoor.getyCoord());
