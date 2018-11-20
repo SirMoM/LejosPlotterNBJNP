@@ -4,7 +4,8 @@ import lejos.hardware.Sound;
 import robot.components.Roboter;
 import robot.util.Coordinate;
 import robot.util.DisplayHandler;
-import robot.util.figures.Quadrat;
+import robot.util.figures.GeoFig;
+import robot.util.figures.NEck;
 
 /**
  * @author Noah Ruben, Benjamin Wiemann, J-P Edoh
@@ -15,11 +16,12 @@ public class Main{
 	public static void main(String args[]) throws Exception, Throwable{
 		Roboter roboter = new Roboter(); // throws Exception
 		Sound.beepSequenceUp();
-		roboter.goToStartPos();
+//		roboter.goToStartPos();
 		Sound.beepSequence();
 		DisplayHandler.writeCurrentCoordinate(roboter.getCurrentCoordinate());
-		Quadrat quadrat = new Quadrat(20, 0, new Coordinate(50, 50), roboter);
-		roboter.addToQ(quadrat.getInstructionSet());
+//		roboter.goToYNull();
+		GeoFig nEck = new NEck(0, new Coordinate(100, 100), roboter, 10, 4);
+		roboter.addToQ(nEck.getInstructionSet());
 		roboter.processInstructions();
 
 	}
