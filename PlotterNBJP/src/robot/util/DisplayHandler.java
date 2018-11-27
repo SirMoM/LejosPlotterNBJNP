@@ -30,8 +30,7 @@ public class DisplayHandler{
 
 	public static int writeCurrentCoordinate(Coordinate coordinate){
 		String drawCurrentCoordinateString = String.format("Pos: (%.2f, %.2f)", coordinate.getxCoord(), coordinate.getxCoord());
-		LCD.drawString(drawCurrentCoordinateString, 0, LCD.CELL_WIDTH * 5);
-		DisplayHandler.writeFirstLine(drawCurrentCoordinateString);
+		LCD.drawString(drawCurrentCoordinateString, 0, 15);
 		return drawCurrentCoordinateString.length();
 	}
 

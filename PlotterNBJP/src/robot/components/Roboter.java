@@ -85,8 +85,7 @@ public class Roboter{
 			this.xAchse.forward();
 		}
 
-		// einbaurichtung wird berücksichtigt
-		this.xAchse.rotateMm(-10);
+		this.xAchse.rotateMm(-100);
 		this.xAchse.stop();
 		this.currentCoordinate.setxCoord(0);
 	}
@@ -176,8 +175,8 @@ public class Roboter{
 
 		this.getXAchse().getMotor().startSync();
 
-		this.getXAchse().rotateDegree(gradToTurnIntX);
-		this.getYAchse().rotateDegree(gradToTurnIntY);
+		this.getXAchse().rotateDegree(gradToTurnIntX * -1);
+		this.getYAchse().rotateDegree(gradToTurnIntY * -1);
 
 		this.getXAchse().getMotor().endSync();
 		this.getXAchse().waitComplete();
