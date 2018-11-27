@@ -43,7 +43,7 @@ public class NEck extends GeoFig{
 //		Coordinate nextCoor = EinheitsKreis.berechnePositionAufKreis(this.degree, this.getRadius());
 		instructions.add(new Instruction(false, 0, nextCoor.getyCoord()));
 		System.out.println("deg: " + nDegree);
-		nextCoor = new Coordinate(-nextCoor.getxCoord(), 0);
+		nextCoor = new Coordinate(nextCoor.getxCoord(), 0);
 		for(int i = 1; i <= this.anzahlEcken * (percentToDraw/100); i++){
 			curCoor = new Coordinate(nextCoor.getxCoord(), nextCoor.getyCoord());
 			nextCoor = EinheitsKreis.berechnePositionAufKreis(curCoor, nDegree.doubleValue());
