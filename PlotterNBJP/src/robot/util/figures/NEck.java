@@ -54,7 +54,7 @@ public class NEck extends GeoFig{
 //			Coordinate temp = EinheitsKreis.berechnePositionAufKreis(nDegree * i, this.getRadius());
 //			instructions.add(new Instruction(true, temp.getxCoord(), temp.getyCoord()));
 		}
-
+		this.getRoboter().setCurrentCoordinate(nextCoor);
 		return instructions;
 	}
 
