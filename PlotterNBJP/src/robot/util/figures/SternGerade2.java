@@ -27,7 +27,7 @@ public class SternGerade2 extends GeoFig{
 	public SternGerade2(double degree, Coordinate mittelpunkt, Roboter roboter, double radius){
 		super(mittelpunkt, roboter, radius);
 		erstesDreieck = new NEck(degree, mittelpunkt, roboter, radius, testAnzahlEcken1);
-		zweitesDreieck = new NEck(degree+60.0, mittelpunkt, roboter, radius, testAnzahlEcken1);
+		zweitesDreieck = new NEck(degree+180.0, mittelpunkt, roboter, radius, testAnzahlEcken1);
 		// TODO Auto-generated constructor stub
 	}
 	@Override
@@ -35,10 +35,6 @@ public class SternGerade2 extends GeoFig{
 		// TODO Auto-generated method stub
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 		instructions.addAll(erstesDreieck.getInstructionSet());
-		// goToMittelpunkt
-		instructions.add(new Instruction(false,
-		this.getMittelpunkt().getxCoord() - this.getRoboter().getCurrentCoordinate().getxCoord(),
-		this.getMittelpunkt().getyCoord() - this.getRoboter().getCurrentCoordinate().getyCoord()));
 		instructions.addAll(zweitesDreieck.getInstructionSet());
 		return instructions;
 	}
