@@ -85,7 +85,8 @@ public class Roboter{
 			this.xAchse.forward();
 		}
 
-		this.xAchse.rotateMm(-100);
+		this.xAchse.stop();
+		this.xAchse.rotateMm(10);
 		this.xAchse.stop();
 		this.currentCoordinate.setxCoord(0);
 	}
@@ -95,6 +96,8 @@ public class Roboter{
 		while (!this.yAchse.getSensor().isAktiv()){
 			this.yAchse.forward();
 		}
+		this.yAchse.stop();
+		this.yAchse.rotateMm(10);
 		this.yAchse.stop();
 		this.currentCoordinate.setyCoord(0);
 	}
@@ -106,7 +109,6 @@ public class Roboter{
 		this.instructionQ.add(new Instruction(false, 0, 0, 0));
 		while (this.hasNextInstruction()){
 			DisplayHandler.drawProgressbar(this.instructionQ.size());
-			DisplayHandler.writeCurrentCoordinate(this.currentCoordinate);
 			this.processInstruction(this.nextInstruction());
 		}
 	}

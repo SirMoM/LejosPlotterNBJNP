@@ -29,9 +29,7 @@ public class DisplayHandler{
 	}
 
 	public static int writeCurrentCoordinate(Coordinate coordinate){
-		String drawCurrentCoordinateString = String.format("Pos: (%.2f, %.2f)", coordinate.getxCoord(), coordinate.getxCoord());
-		LCD.drawString(drawCurrentCoordinateString, 0, 15);
-		return drawCurrentCoordinateString.length();
+		return DisplayHandler.writeCurrentCoordinate(coordinate.getxCoord(), coordinate.getyCoord());
 	}
 
 	/**
@@ -39,10 +37,10 @@ public class DisplayHandler{
 	 * @param yPos the current y-Position of the Robot
 	 * @return the length of the string to display.
 	 */
-	public static int writeCurrentCoordinate(int xPos, int yPos){
-		String drawCurrentCoordinateString = String.format("Pos: (%d, %d)", xPos, yPos);
-		LCD.drawString(drawCurrentCoordinateString, 0, LCD.CELL_WIDTH * 5);
-//		DisplayHandler.writeFirstLine(drawCurrentCoordinateString);
+	public static int writeCurrentCoordinate(double xPos, double yPos){
+		String drawCurrentCoordinateString = String.format("Pos: (%.2f, %.2f)", xPos, yPos);
+		LCD.clear((int) (LCD.DISPLAY_CHAR_DEPTH * 0.25));
+		LCD.drawString(drawCurrentCoordinateString, 0, (int) (LCD.DISPLAY_CHAR_DEPTH * 0.25));
 		return drawCurrentCoordinateString.length();
 	}
 
