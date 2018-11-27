@@ -39,11 +39,10 @@ public class NEck extends GeoFig{
 		BigDecimal nDegree = new BigDecimal(360).divide(new BigDecimal(this.anzahlEcken));
 		Coordinate curCoor = new Coordinate(0, 0);
 		// First Coord of the Necks with the degree offset
-//		Coordinate nextCoor = EinheitsKreis.berechnePositionAufKreis(new Coordinate(this.getRadius(), 0), this.degree);
-		Coordinate nextCoor = EinheitsKreis.berechnePositionAufKreis(this.degree, this.getRadius());
-		instructions.add(new Instruction(false, 0, nextCoor.getyCoord()));
+		Coordinate nextCoor = EinheitsKreis.berechnePositionAufKreis(new Coordinate(this.getRadius(), 0), this.degree);
+//		Coordinate nextCoor = EinheitsKreis.berechnePositionAufKreis(this.degree, this.getRadius());
+		instructions.add(new Instruction(false,- nextCoor.getxCoord(), nextCoor.getyCoord()));
 		System.out.println("deg: " + nDegree);
-		nextCoor = new Coordinate(-nextCoor.getxCoord(), 0);
 		for(int i = 1; i <= this.anzahlEcken * (percentToDraw/100); i++){
 			curCoor = new Coordinate(nextCoor.getxCoord(), nextCoor.getyCoord());
 			nextCoor = EinheitsKreis.berechnePositionAufKreis(curCoor, nDegree.doubleValue());
