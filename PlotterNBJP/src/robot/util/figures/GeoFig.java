@@ -9,8 +9,6 @@ import robot.components.Roboter;
 import robot.util.Coordinate;
 import robot.util.Instruction;
 
-
-
 /**
  * @author Noah Ruben, Benjamin Wiemann, J-P Edoh
  * @see <a href="https://github.com/SirMoM/SoftwaretechnikAufgaben">Github</a>
@@ -20,7 +18,7 @@ public abstract class GeoFig{
 	private Coordinate mittelpunkt;
 	private Roboter roboter;
 	private double radius;
-	
+
 	public GeoFig(){
 	}
 
@@ -29,7 +27,7 @@ public abstract class GeoFig{
 	 */
 	public GeoFig(Coordinate mittelpunkt, Roboter roboter){
 		this.mittelpunkt = mittelpunkt;
-	
+
 		this.roboter = roboter;
 	}
 
@@ -37,6 +35,15 @@ public abstract class GeoFig{
 		this.mittelpunkt = mittelpunkt;
 		this.roboter = roboter;
 		this.radius = radius;
+	}
+
+	public Coordinate getEndCoordinate(){
+		Coordinate endCorrdinate = this.getRoboter().getCurrentCoordinate();
+		List<Instruction> instructionSet = this.getInstructionSet();
+		for(Instruction instruction : instructionSet){
+			endCorrdinate.moveCoordinates(instruction.getxVectorLen(), instruction.getyVectorLen());
+		}
+		return endCorrdinate;
 	}
 
 	/**
@@ -52,31 +59,17 @@ public abstract class GeoFig{
 	}
 
 	/**
-	 * @return the roboter
-	 */
-	public Roboter getRoboter() {
-		return roboter;
-	}
-
-	/**
 	 * @return the radius
 	 */
-	public double getRadius() {
-		return radius;
+	public double getRadius(){
+		return this.radius;
 	}
 
 	/**
-	 * @param radius the radius to set
+	 * @return the roboter
 	 */
-	public void setRadius(double radius) {
-		this.radius = radius;
-	}
-
-	/**
-	 * @param roboter the roboter to set
-	 */
-	public void setRoboter(Roboter roboter) {
-		this.roboter = roboter;
+	public Roboter getRoboter(){
+		return this.roboter;
 	}
 
 	/**
@@ -84,6 +77,20 @@ public abstract class GeoFig{
 	 */
 	public void setMittelpunkt(Coordinate mittelpunkt){
 		this.mittelpunkt = mittelpunkt;
+	}
+
+	/**
+	 * @param radius the radius to set
+	 */
+	public void setRadius(double radius){
+		this.radius = radius;
+	}
+
+	/**
+	 * @param roboter the roboter to set
+	 */
+	public void setRoboter(Roboter roboter){
+		this.roboter = roboter;
 	}
 
 }

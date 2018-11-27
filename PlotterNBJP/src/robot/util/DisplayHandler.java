@@ -39,7 +39,7 @@ public class DisplayHandler{
 	 */
 	public static int writeCurrentCoordinate(double xPos, double yPos){
 		String drawCurrentCoordinateString = String.format("Pos: (%.2f, %.2f)", xPos, yPos);
-		LCD.clear((int) (LCD.DISPLAY_CHAR_DEPTH * 0.25));
+		LCD.clear();
 		LCD.drawString(drawCurrentCoordinateString, 0, (int) (LCD.DISPLAY_CHAR_DEPTH * 0.25));
 		return drawCurrentCoordinateString.length();
 	}
