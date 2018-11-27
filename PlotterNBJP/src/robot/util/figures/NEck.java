@@ -24,14 +24,13 @@ public class NEck extends GeoFig{
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 		int nDegree = 360 / this.anzahlEcken;
 		Coordinate curCoor = new Coordinate(0, 0);
-		Coordinate nextCoor = new Coordinate(this.getRadius(), 0);
+		Coordinate nextCoor = EinheitsKreis.berechnePositionAufKreis(new Coordinate(getRadius(),0), this.degree);
 		instructions.add(new Instruction(false, 0, nextCoor.getyCoord()));
 		System.out.println("deg: " + nDegree);
 		for(int i = 1; i <= this.anzahlEcken; i++){
 			curCoor = new Coordinate(nextCoor.getxCoord(), nextCoor.getyCoord());
 			nextCoor = EinheitsKreis.berechnePositionAufKreis(curCoor, nDegree);
 			Coordinate deltaCoor = new Coordinate(curCoor.getxCoord() - nextCoor.getxCoord(), curCoor.getyCoord() - nextCoor.getyCoord());
-
 			instructions.add(new Instruction(true, deltaCoor.getxCoord(), deltaCoor.getyCoord()));
 
 //			instructions.add(new Instruction(true, this.getRadius(),0));
