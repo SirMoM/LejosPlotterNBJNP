@@ -7,7 +7,7 @@ import lejos.hardware.lcd.LCD;
 
 /**
  * @author Noah Ruben
- * @see <a href="https://github.com/SirMoM/SoftwaretechnikAufgaben">Github</a>
+ * @see <a href="https://github.com/SirMoM/LejosPlotterNBJNP">Github</a>
  */
 public class DisplayHandler{
 

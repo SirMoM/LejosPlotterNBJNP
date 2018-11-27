@@ -13,7 +13,7 @@ import robot.util.Instruction;
 
 /**
  * @author Rene Gerlach, Noah Ruben, Benjamin Wiehmann, Jean-Paul Edoh
- * @see <a href="https://github.com/SirMoM/SoftwaretechnikAufgaben">Github</a>
+ * @see <a href="https://github.com/SirMoM/LejosPlotterNBJNP">Github</a>
  */
 public class Roboter{
 
