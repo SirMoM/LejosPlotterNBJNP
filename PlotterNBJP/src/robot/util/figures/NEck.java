@@ -25,8 +25,8 @@ public class NEck extends GeoFig {
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 		// goToMittelpunkt
 		instructions.add(new Instruction(false,
-				this.getRoboter().getCurrentCoordinate().getxCoord() - this.getMittelpunkt().getxCoord(),
-				this.getRoboter().getCurrentCoordinate().getyCoord() - this.getMittelpunkt().getyCoord()));
+				this.getMittelpunkt().getxCoord() - this.getRoboter().getCurrentCoordinate().getxCoord(),
+				this.getMittelpunkt().getyCoord() - this.getRoboter().getCurrentCoordinate().getyCoord()));
 		//Prepare the Drawing
 		BigDecimal nDegree = new BigDecimal(360).divide(new BigDecimal(this.anzahlEcken));
 		Coordinate curCoor = new Coordinate(0, 0);
