@@ -30,8 +30,7 @@ public class NEck extends GeoFig{
 		
 	}
 	
-	@Override
-	public List<Instruction> getInstructionSet(){
+	public List<Instruction> getInstructionSet2(){
 		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
 		// goToMittelpunkt
 		instructions.add(new Instruction(false, this.getMittelpunkt().getxCoord() - this.getRoboter().getCurrentCoordinate().getxCoord(), this.getMittelpunkt().getyCoord() - this.getRoboter().getCurrentCoordinate().getyCoord()));
@@ -54,6 +53,28 @@ public class NEck extends GeoFig{
 //			instructions.add(new Instruction(true, temp.getxCoord(), temp.getyCoord()));
 		}
 		this.getRoboter().setCurrentCoordinate(nextCoor);
+		return instructions;
+	}
+	
+	@Override
+	public List<Instruction> getInstructionSet(){
+		ArrayList<Instruction> instructions = new ArrayList<Instruction>();
+		// goToMittelpunkt
+		instructions.add(new Instruction(false, this.getMittelpunkt().getxCoord() - this.getRoboter().getCurrentCoordinate().getxCoord(), this.getMittelpunkt().getyCoord() - this.getRoboter().getCurrentCoordinate().getyCoord()));
+		// goToFirstPosition
+		instructions.add(new Instruction(false, getRadius(), 0));
+		
+		Coordinate c = EinheitsKreis.berechnePositionAufKreis(360.0d / anzahlEcken, this.getRadius());
+		final double schenkelLaenge = Math.sqrt(c.getxCoord() * c.getxCoord() + c.getyCoord() + c.getyCoord());
+		
+		Coordinate first = EinheitsKreis.berechnePositionAufKreis(((anzahlEcken-2)*180)-180, schenkelLaenge);
+		instructions.add(new Instruction(true, first.getxCoord(), first.getyCoord()));
+		
+		for(int i=2; i<=anzahlEcken; i++) {
+			Coordinate next = EinheitsKreis.berechnePositionAufKreis(360.0d / anzahlEcken * i, schenkelLaenge);
+			instructions.add(new Instruction(true, next.getxCoord(), next.getyCoord()));
+		}
+		
 		return instructions;
 	}
 
