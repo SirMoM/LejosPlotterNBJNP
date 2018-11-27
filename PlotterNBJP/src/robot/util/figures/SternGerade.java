@@ -42,8 +42,12 @@ public class SternGerade extends GeoFig{
 			Coordinate deltaCoor = new Coordinate(curCoor.getxCoord() - nextCoor.getxCoord(), curCoor.getyCoord() - nextCoor.getyCoord());
 			instructions.add(new Instruction(true, deltaCoor.getxCoord(), deltaCoor.getyCoord()));
 			}
+		// goToMittelpunkt
+				instructions.add(new Instruction(false,
+				this.getMittelpunkt().getxCoord() - this.getRoboter().getCurrentCoordinate().getxCoord(),
+				this.getMittelpunkt().getyCoord() - this.getRoboter().getCurrentCoordinate().getyCoord()));
 		
-		//secondStep
+		//secondStep --> falsche Verschiebung
 		Coordinate nextCoor2 = EinheitsKreis.berechnePositionAufKreis(new Coordinate(getRadius(),0), this.degree+180.0);
 		instructions.add(new Instruction(false, 0, nextCoor2.getyCoord()));
 		System.out.println("deg1: " + nDegree1);
