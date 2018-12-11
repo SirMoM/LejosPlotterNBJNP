@@ -41,7 +41,7 @@ public abstract class GeoFig{
 		Coordinate endCorrdinate = this.getRoboter().getCurrentCoordinate();
 		List<Instruction> instructionSet = this.getInstructionSet();
 		for(Instruction instruction : instructionSet){
-			endCorrdinate.moveCoordinates(instruction.getxVectorLen(), instruction.getyVectorLen());
+			endCorrdinate.setCoordinates(instruction.getxVectorLen(), instruction.getyVectorLen());
 		}
 		return endCorrdinate;
 	}
