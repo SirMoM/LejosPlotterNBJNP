@@ -73,13 +73,12 @@ public class Roboter{
 		return this.zAchse;
 	}
 
-	// TODO TEST THIS
 	public void goToStartPos(){
 		this.goToXNull();
 		this.goToYNull();
+		DisplayHandler.writeCurrentCoordinate(this.currentCoordinate);
 	}
 
-	// TODO TEST THIS
 	public void goToXNull(){
 		while (!this.xAchse.getSensor().isAktiv()){
 			this.xAchse.forward();
@@ -91,7 +90,6 @@ public class Roboter{
 		this.currentCoordinate.setxCoord(0);
 	}
 
-	// TODO TEST THIS
 	public void goToYNull(){
 		while (!this.yAchse.getSensor().isAktiv()){
 			this.yAchse.forward();
@@ -111,6 +109,13 @@ public class Roboter{
 			DisplayHandler.drawProgressbar(this.instructionQ.size());
 			this.processInstruction(this.nextInstruction());
 		}
+	}
+
+	/**
+	 * @param currentCoordinate the currentCoordinate to set
+	 */
+	public void setCurrentCoordinate(Coordinate currentCoordinate){
+		this.currentCoordinate = currentCoordinate;
 	}
 
 	/**
@@ -188,13 +193,6 @@ public class Roboter{
 		this.currentCoordinate.moveCoordinates(instruction.getxVectorLen(), instruction.getyVectorLen());
 		DisplayHandler.writeCurrentCoordinate(this.currentCoordinate);
 		// TODO end sync here
-	}
-
-	/**
-	 * @param currentCoordinate the currentCoordinate to set
-	 */
-	public void setCurrentCoordinate(Coordinate currentCoordinate){
-		this.currentCoordinate = currentCoordinate;
 	}
 
 	@Override // TODO Ask what this does

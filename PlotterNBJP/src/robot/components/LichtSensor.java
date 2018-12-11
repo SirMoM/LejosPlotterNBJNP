@@ -3,6 +3,7 @@ package robot.components;
 import lejos.hardware.port.Port;
 import lejos.hardware.sensor.EV3ColorSensor;
 import lejos.hardware.sensor.SensorMode;
+import robot.util.DisplayHandler;
 
 public final class LichtSensor extends Sensor<EV3ColorSensor>{
 
@@ -16,8 +17,7 @@ public final class LichtSensor extends Sensor<EV3ColorSensor>{
 	@Override
 	public void kalibriere(float wert){
 		this.schwellwert = wert;
-		// TODO richtiger log
-//		System.out.println("Kalibrierng Licht abgeschlossen: " + this.schwellwert);
+		DisplayHandler.writeFirstLine("Kalibrierng Licht: " + this.schwellwert);
 	}
 
 	@Override
